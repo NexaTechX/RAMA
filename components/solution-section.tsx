@@ -1,0 +1,160 @@
+"use client"
+
+import { useRef, useEffect, useState } from "react"
+import dynamic from "next/dynamic"
+
+const SolutionCanvas = dynamic(() => import("./solution-canvas").then((mod) => ({ default: mod.SolutionCanvas })), {
+  ssr: false,
+  loading: () => null,
+})
+
+export function SolutionSection() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const [isVisible, setIsVisible] = useState(false)
+  const [mounted, setMounted] = useState(false)
+  const [scrollY, setScrollY] = useState(0)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.3 },
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect()
+        const scrollProgress = Math.max(0, Math.min(1, 1 - rect.top / window.innerHeight))
+        setScrollY(scrollProgress)
+      }
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  const features = [
+    { text: "Plastic-Free", icon: "○" },
+    { text: "Minimal", icon: "△" },
+    { text: "Intentional", icon: "□" },
+  ]
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative min-h-screen flex items-center justify-center px-6 py-32 overflow-hidden"
+    >
+      {/* Enhanced 3D Background with gradient overlay */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 opacity-15">{mounted && <SolutionCanvas />}</div>
+        <div
+          className="absolute inset-0 bg-gradient-to-br from-background via-transparent to-muted/30"
+          style={{ opacity: 0.8 }}
+        />
+      </div>
+
+      {/* Floating orbs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div
+          className="absolute top-1/3 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl"
+          style={{ transform: `translate(${scrollY * -30}px, ${scrollY * 20}px)` }}
+        />
+        <div
+          className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-secondary/5 rounded-full blur-3xl"
+          style={{ transform: `translate(${scrollY * 40}px, ${scrollY * -25}px)` }}
+        />
+      </div>
+
+      <div className="relative z-10 max-w-4xl text-center">
+        <div
+          className={`inline-block mb-10 transition-all duration-1000 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <p className="text-[11px] tracking-[0.45em] uppercase text-muted-foreground font-light mb-4">Our Answer</p>
+          <div className="h-px w-24 bg-gradient-to-r from-transparent via-border to-transparent mx-auto" />
+        </div>
+
+        <h2
+          className={`text-4xl md:text-6xl lg:text-7xl font-serif font-extralight leading-[1.3] mb-4 transition-all duration-1200 delay-200 ease-out ${
+            isVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-12 blur-sm"
+          }`}
+        >
+          RAMA reimagines water
+        </h2>
+        <h2
+          className={`text-4xl md:text-6xl lg:text-7xl font-serif font-extralight leading-[1.3] bg-gradient-to-r from-foreground via-foreground/70 to-foreground bg-clip-text text-transparent transition-all duration-1200 delay-300 ease-out ${
+            isVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-12 blur-sm"
+          }`}
+        >
+          as an object of intention.
+        </h2>
+
+        <div
+          className={`mt-16 max-w-2xl mx-auto transition-all duration-1200 delay-500 ease-out ${
+            isVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-12 blur-sm"
+          }`}
+        >
+          <p className="text-xl md:text-2xl text-muted-foreground/90 leading-relaxed font-light">
+            Purified drinking water sealed in{" "}
+            <span className="text-foreground font-normal">minimalist aluminum cans</span> — plastic-free, elegant, and
+            designed to belong in refined environments.
+          </p>
+        </div>
+
+        {/* Enhanced feature pills */}
+        <div
+          className={`mt-20 flex flex-wrap items-center justify-center gap-6 transition-all duration-1200 delay-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          {features.map((feature, index) => (
+            <div
+              key={feature.text}
+              className="group relative"
+              style={{ transitionDelay: `${700 + index * 100}ms` }}
+            >
+              <div className="flex items-center gap-4 px-8 py-4 border border-border/50 backdrop-blur-sm rounded-full hover:border-foreground/30 hover:bg-muted/20 transition-all duration-500 hover:scale-105 hover:shadow-lg">
+                <span className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-light group-hover:text-foreground transition-colors">
+                  {feature.text}
+                </span>
+                <span className="text-muted-foreground/50 text-xs">{feature.icon}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Closing statement with border */}
+        <div
+          className={`mt-24 relative transition-all duration-1200 delay-1000 ease-out ${
+            isVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-12 blur-sm"
+          }`}
+        >
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-6 w-px h-12 bg-gradient-to-b from-border to-transparent" />
+          <div className="inline-block px-16 py-8 border border-border/30 backdrop-blur-sm relative overflow-hidden group hover:border-foreground/40 transition-all duration-500">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-muted/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
+            <p className="text-2xl md:text-3xl font-serif italic text-foreground/80 font-light tracking-wide relative">
+              Nothing excessive.
+              <br />
+              <span className="text-muted-foreground">Nothing accidental.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}

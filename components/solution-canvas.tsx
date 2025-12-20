@@ -30,7 +30,15 @@ export function SolutionCanvas() {
   return (
     <Canvas
       camera={{ position: [0, 0, 8], fov: 45 }}
-      gl={{ antialias: true, alpha: true }}
+      gl={{ 
+        antialias: true, 
+        alpha: true,
+        powerPreference: "high-performance",
+        stencil: false,
+        depth: true,
+      }}
+      dpr={[1, 2]} // Limit pixel ratio for better performance
+      performance={{ min: 0.5 }} // Lower quality when FPS drops
       style={{ background: "transparent" }}
     >
       <Suspense fallback={null}>

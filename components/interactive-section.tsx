@@ -104,11 +104,11 @@ export function InteractiveSection() {
 
           {/* Right: Product Image */}
           <div
-            className={`relative transition-all duration-1200 delay-500 ${
+            className={`relative transition-all duration-1200 delay-500 will-change-[opacity,transform] ${
               isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
             }`}
           >
-            <div className="relative aspect-square">
+            <div className="relative aspect-square w-full">
               {/* Decorative corner accents */}
               <div className="absolute top-0 left-0 w-16 h-16 border-l-2 border-t-2 border-foreground/20 -translate-x-4 -translate-y-4 pointer-events-none z-10" />
               <div className="absolute top-0 right-0 w-16 h-16 border-r-2 border-t-2 border-foreground/20 translate-x-4 -translate-y-4 pointer-events-none z-10" />
@@ -120,13 +120,16 @@ export function InteractiveSection() {
 
               {/* Image Container */}
               <div className="relative w-full h-full backdrop-blur-sm bg-background/5 border border-border/20 rounded-sm overflow-hidden shadow-2xl group">
-                <div className="relative w-full h-full">
+                <div className="absolute inset-0">
                   <Image
-                    src="/images/Shinaayomi Rama.jpeg"
-                    alt="RAMA Premium Aluminum Can - Shinaayomi"
+                    src="/images/Shinaayomi%20Rama.jpeg"
+                    alt="RAMA Premium Aluminum Canned Water - Luxury purified drinking water in minimalist aluminum can, plastic-free and sustainable, designed for premium events and refined moments"
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700 will-change-transform"
                     priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    itemProp="image"
+                    quality={90}
                   />
                 </div>
 

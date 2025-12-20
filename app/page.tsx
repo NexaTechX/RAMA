@@ -12,18 +12,28 @@ import { Footer } from "@/components/footer"
 
 const HeroSection = dynamic(() => import("@/components/hero-section").then((mod) => ({ default: mod.HeroSection })), {
   ssr: false,
+  loading: () => <div className="h-screen" />, // Prevent layout shift
 })
 const SolutionSection = dynamic(
   () => import("@/components/solution-section").then((mod) => ({ default: mod.SolutionSection })),
-  { ssr: false },
+  { 
+    ssr: false,
+    loading: () => <div className="min-h-screen" />,
+  },
 )
 const InteractiveSection = dynamic(
   () => import("@/components/interactive-section").then((mod) => ({ default: mod.InteractiveSection })),
-  { ssr: false },
+  { 
+    ssr: false,
+    loading: () => <div className="min-h-screen" />,
+  },
 )
 const ClosingSection = dynamic(
   () => import("@/components/closing-section").then((mod) => ({ default: mod.ClosingSection })),
-  { ssr: false },
+  { 
+    ssr: false,
+    loading: () => <div className="min-h-screen" />,
+  },
 )
 
 export default function Home() {

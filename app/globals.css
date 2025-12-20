@@ -115,9 +115,18 @@
   }
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+/* Optimized smooth scrolling - only on supported browsers */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Use CSS scroll-behavior only, avoid JS smooth scrolling for better performance */
+  @supports (scroll-behavior: smooth) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
 }
 
 /* Custom selection color */
@@ -159,12 +168,18 @@ canvas {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   user-select: none;
+  will-change: transform;
+  transform: translateZ(0); /* Force GPU acceleration */
 }
 
 /* Ensure smooth scrolling on touch devices */
 body {
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-y: contain;
+  /* Optimize rendering */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Custom utility for scroll-friendly canvas containers */
@@ -174,4 +189,18 @@ body {
 
 .touch-pan-x {
   touch-action: pan-x;
+}
+
+/* Performance optimizations */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Optimize transitions */
+@media (prefers-reduced-motion: no-preference) {
+  .smooth-transition {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
 }

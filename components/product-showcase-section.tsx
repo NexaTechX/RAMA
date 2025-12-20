@@ -87,10 +87,11 @@ export function ProductShowcaseSection() {
                 <div className="relative w-full h-full group">
                   <Image
                     src="/images/rama-20thin.png"
-                    alt="RAMA Premium Aluminum Can"
+                    alt="RAMA Premium Aluminum Canned Water - 330ml luxury purified drinking water in minimalist aluminum can, plastic-free and infinitely recyclable"
                     fill
                     className="object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-700"
                     priority
+                    itemProp="image"
                   />
                   {/* Floating animation hint */}
                   <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-8">

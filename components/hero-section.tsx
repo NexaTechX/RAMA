@@ -1,26 +1,15 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { useScrollOpacity } from "@/hooks/use-scroll"
 
 export function HeroSection() {
-  const [opacity, setOpacity] = useState(1)
   const [mounted, setMounted] = useState(false)
+  const opacity = useScrollOpacity(600)
 
   useEffect(() => {
     setMounted(true)
   }, [])
-
-  useEffect(() => {
-    if (!mounted || typeof window === "undefined") return
-
-    const handleScroll = () => {
-      const scrollY = window.scrollY
-      const newOpacity = Math.max(0, 1 - scrollY / 600)
-      setOpacity(newOpacity)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [mounted])
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -31,7 +20,10 @@ export function HeroSection() {
           loop
           muted
           playsInline
+          preload="metadata"
           className="absolute inset-0 w-full h-full object-cover"
+          style={{ willChange: "transform" }}
+          aria-label="RAMA luxury canned water product showcase video"
         >
           <source src="/video/Shinaayomi holding RAMA Can.mp4" type="video/mp4" />
         </video>
@@ -45,7 +37,7 @@ export function HeroSection() {
         <h1 className="text-5xl md:text-7xl font-serif font-light leading-tight tracking-tight text-balance text-white">
           For Refined Moments
         </h1>
-        <p className="mt-8 text-lg text-white/90 max-w-xl mx-auto leading-relaxed">
+        <p className="mt-8 text-lg text-white/90 max-w-xl mx-auto leading-relaxed" itemProp="description">
           RAMA is not about quenching thirst. It is about presence.
         </p>
         <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 pointer-events-auto">

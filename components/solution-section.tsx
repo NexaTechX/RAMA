@@ -36,15 +36,31 @@ export function SolutionSection() {
   }, [])
 
   useEffect(() => {
+    if (!sectionRef.current) return
+
+    let ticking = false
+
+    const updateProgress = () => {
+      if (!sectionRef.current) return
+      const rect = sectionRef.current.getBoundingClientRect()
+      const scrollProgress = Math.max(0, Math.min(1, 1 - rect.top / window.innerHeight))
+      setScrollY(scrollProgress)
+      ticking = false
+    }
+
     const handleScroll = () => {
-      if (sectionRef.current) {
-        const rect = sectionRef.current.getBoundingClientRect()
-        const scrollProgress = Math.max(0, Math.min(1, 1 - rect.top / window.innerHeight))
-        setScrollY(scrollProgress)
+      if (!ticking) {
+        window.requestAnimationFrame(updateProgress)
+        ticking = true
       }
     }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    updateProgress()
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+    }
   }, [])
 
   const features = [
@@ -60,7 +76,9 @@ export function SolutionSection() {
     >
       {/* Enhanced 3D Background with gradient overlay */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 opacity-15">{mounted && <SolutionCanvas />}</div>
+        <div className="absolute inset-0 opacity-15">
+          {mounted && isVisible && <SolutionCanvas />}
+        </div>
         <div
           className="absolute inset-0 bg-gradient-to-br from-background via-transparent to-muted/30"
           style={{ opacity: 0.8 }}
@@ -70,12 +88,12 @@ export function SolutionSection() {
       {/* Floating orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
-          className="absolute top-1/3 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl"
-          style={{ transform: `translate(${scrollY * -30}px, ${scrollY * 20}px)` }}
+          className="absolute top-1/3 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl will-change-transform"
+          style={{ transform: `translate3d(${scrollY * -30}px, ${scrollY * 20}px, 0)` }}
         />
         <div
-          className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-secondary/5 rounded-full blur-3xl"
-          style={{ transform: `translate(${scrollY * 40}px, ${scrollY * -25}px)` }}
+          className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-secondary/5 rounded-full blur-3xl will-change-transform"
+          style={{ transform: `translate3d(${scrollY * 40}px, ${scrollY * -25}px, 0)` }}
         />
       </div>
 

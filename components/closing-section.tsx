@@ -42,7 +42,9 @@ export function ClosingSection() {
     >
       {/* Enhanced 3D Canvas with spotlight and gradient overlay */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 opacity-30">{mounted && <ClosingCanvas />}</div>
+        <div className="absolute inset-0 opacity-30">
+          {mounted && isVisible && <ClosingCanvas />}
+        </div>
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
       </div>
 

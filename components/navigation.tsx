@@ -2,30 +2,21 @@
 
 import { useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
+import { useScroll } from "@/hooks/use-scroll"
 
 export function Navigation() {
-  const [scrolled, setScrolled] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const { isScrolled } = useScroll()
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  useEffect(() => {
-    if (!mounted) return
-
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [mounted])
-
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-out",
-        scrolled
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-out will-change-[background-color,backdrop-filter,border-color,box-shadow,padding]",
+        isScrolled
           ? "bg-background/70 backdrop-blur-xl border-b border-border/50 shadow-2xl shadow-black/5 py-4"
           : "bg-gradient-to-b from-black/50 to-transparent py-6",
       )}
@@ -35,7 +26,7 @@ export function Navigation() {
           <span
             className={cn(
               "text-2xl font-serif tracking-[0.35em] font-light transition-all duration-500",
-              scrolled ? "text-foreground" : "text-white",
+              isScrolled ? "text-foreground" : "text-white",
               "group-hover:tracking-[0.4em] group-hover:opacity-80",
             )}
           >
@@ -44,7 +35,7 @@ export function Navigation() {
           <div
             className={cn(
               "w-1.5 h-1.5 rounded-full transition-all duration-500",
-              scrolled ? "bg-foreground/60" : "bg-white/60",
+              isScrolled ? "bg-foreground/60" : "bg-white/60",
               "group-hover:scale-150",
             )}
           />
@@ -57,9 +48,9 @@ export function Navigation() {
               href={`#${item.toLowerCase()}`}
               className={cn(
                 "relative transition-all duration-500 hover:tracking-[0.25em]",
-                scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/70 hover:text-white",
+                isScrolled ? "text-muted-foreground hover:text-foreground" : "text-white/70 hover:text-white",
                 "after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:transition-all after:duration-500",
-                scrolled ? "after:bg-foreground" : "after:bg-white",
+                isScrolled ? "after:bg-foreground" : "after:bg-white",
                 "hover:after:w-full",
               )}
               style={{ transitionDelay: `${index * 50}ms` }}
@@ -73,7 +64,7 @@ export function Navigation() {
           className={cn(
             "group relative px-8 py-3 text-[10px] tracking-[0.25em] uppercase font-light overflow-hidden",
             "transition-all duration-500 hover:tracking-[0.3em] hover:px-10",
-            scrolled
+            isScrolled
               ? "bg-foreground text-background hover:bg-foreground/90"
               : "bg-white/90 text-black hover:bg-white backdrop-blur-sm",
             "before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent",

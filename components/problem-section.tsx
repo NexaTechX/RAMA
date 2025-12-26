@@ -65,74 +65,24 @@ export function ProblemSection() {
           The Quiet Problem
         </p>
 
-        <div className="space-y-6">
-          <h2
-            className={`text-4xl md:text-6xl lg:text-7xl font-serif font-extralight leading-[1.2] transition-all duration-1200 delay-200 ease-out ${
-              isVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-12 blur-sm"
-            }`}
-          >
-            Events spend heavily on
-          </h2>
-          <h2
-            className={`text-4xl md:text-6xl lg:text-7xl font-serif font-extralight leading-[1.2] bg-gradient-to-r from-foreground via-foreground/80 to-foreground bg-clip-text text-transparent transition-all duration-1200 delay-300 ease-out ${
-              isVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-12 blur-sm"
-            }`}
-          >
-            lighting, florals, tableware
-          </h2>
-          <h2
-            className={`text-4xl md:text-6xl lg:text-7xl font-serif font-extralight leading-[1.2] transition-all duration-1200 delay-400 ease-out ${
-              isVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-12 blur-sm"
-            }`}
-          >
-            and ambience.
-          </h2>
-        </div>
-
-        <div
-          className={`mt-12 flex items-center justify-center gap-4 transition-all duration-1000 delay-600 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <div className="h-px w-12 bg-gradient-to-r from-transparent to-border" />
-          <p className="text-xl md:text-2xl text-muted-foreground/90 font-light italic">
-            Yet one object is often overlooked
-          </p>
-          <div className="h-px w-12 bg-gradient-to-l from-transparent to-border" />
-        </div>
-
-        {/* Animated divider */}
-        <div className="relative my-20">
-          <div
-            className={`w-px h-28 bg-gradient-to-b from-transparent via-border to-transparent mx-auto transition-all duration-1000 delay-800 ${
-              isVisible ? "opacity-100 scale-y-100" : "opacity-0 scale-y-0"
-            }`}
-          />
-          <div
-            className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-foreground/20 transition-all duration-1000 delay-1000 ${
-              isVisible ? "opacity-100 scale-100" : "opacity-0 scale-0"
-            }`}
-          >
-            <div className="absolute inset-0 rounded-full bg-foreground/30 animate-ping" />
-          </div>
-        </div>
-
-        <p
-          className={`text-lg md:text-xl text-muted-foreground/80 max-w-2xl mx-auto leading-relaxed font-light transition-all duration-1200 delay-1000 ease-out ${
+        <h2
+          className={`text-4xl md:text-6xl lg:text-7xl font-serif font-extralight leading-[1.2] mb-12 transition-all duration-1200 delay-200 ease-out ${
             isVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-12 blur-sm"
           }`}
         >
-          Generic plastic bottled water sits on premium tables — visually loud, environmentally careless, and
-          <span className="italic font-serif text-foreground/90"> out of place</span>.
-        </p>
+          Between the Forgettable and the Performative
+        </h2>
 
         <div
-          className={`mt-16 inline-block px-12 py-6 border border-border/50 backdrop-blur-sm rounded-sm transition-all duration-1200 delay-1200 ease-out ${
-            isVisible ? "opacity-100 translate-y-0 blur-0 scale-100" : "opacity-0 translate-y-12 blur-sm scale-95"
+          className={`max-w-3xl mx-auto space-y-6 transition-all duration-1200 delay-400 ease-out ${
+            isVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-12 blur-sm"
           }`}
         >
-          <p className="text-2xl md:text-4xl font-serif italic text-foreground/90 font-light tracking-wide">
-            The experience fractures.
+          <p className="text-lg md:text-xl text-muted-foreground/90 leading-relaxed font-light">
+            For too long, the choice has been binary: the generic plastic bottle that undermines your taste, or the over-designed "luxury" water that shouts its own name. One is an afterthought. The other, a pretense. Both fail the moment.
+          </p>
+          <p className="text-lg md:text-xl text-muted-foreground/90 leading-relaxed font-light">
+            In boardrooms and living rooms, at weddings and in workout bags, the vessel for our most essential resource should not be an apology or a declaration—it should be a canvas.
           </p>
         </div>
       </div>

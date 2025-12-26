@@ -1,19 +1,10 @@
 "use client"
 
 import { useRef, useEffect, useState } from "react"
-import Image from "next/image"
-
-const features = [
-  { value: "100%", label: "Purified", sublabel: "Spring Water", icon: "💧" },
-  { value: "0g", label: "Zero", sublabel: "Plastic", icon: "♻️" },
-  { value: "330ml", label: "Premium", sublabel: "Aluminum", icon: "✦" },
-  { value: "100%", label: "Infinitely", sublabel: "Recyclable", icon: "🌿" },
-]
 
 export function ProductShowcaseSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const [isVisible, setIsVisible] = useState(false)
-  const [hoveredFeature, setHoveredFeature] = useState<number | null>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -43,10 +34,10 @@ export function ProductShowcaseSection() {
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative max-w-7xl w-full">
+      <div className="relative max-w-6xl w-full space-y-32">
         {/* Section Header */}
         <div
-          className={`text-center mb-20 transition-all duration-1000 ${
+          className={`text-center transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
@@ -56,141 +47,80 @@ export function ProductShowcaseSection() {
             <div className="h-px w-16 bg-gradient-to-l from-transparent to-border" />
           </div>
           <h2 className="text-4xl md:text-6xl font-serif font-extralight">
-            Designed for{" "}
+            Elements of{" "}
             <span className="bg-gradient-to-r from-foreground via-foreground/80 to-foreground bg-clip-text text-transparent">
-              distinction
+              RAMA
             </span>
           </h2>
         </div>
 
-        {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          {/* Left: Product Display */}
+        {/* Pure Alpine Spring Water Section */}
+        <div className="space-y-8">
           <div
-            className={`relative transition-all duration-1200 delay-300 ${
-              isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
+            className={`text-center transition-all duration-1000 delay-300 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            <div className="relative aspect-square max-w-lg mx-auto">
-              {/* Decorative frame */}
-              <div className="absolute inset-0 border border-border/20 rounded-sm" />
-              <div className="absolute top-0 left-0 w-16 h-16 border-l-2 border-t-2 border-foreground/20 -translate-x-4 -translate-y-4" />
-              <div className="absolute top-0 right-0 w-16 h-16 border-r-2 border-t-2 border-foreground/20 translate-x-4 -translate-y-4" />
-              <div className="absolute bottom-0 left-0 w-16 h-16 border-l-2 border-b-2 border-foreground/20 -translate-x-4 translate-y-4" />
-              <div className="absolute bottom-0 right-0 w-16 h-16 border-r-2 border-b-2 border-foreground/20 translate-x-4 translate-y-4" />
-
-              {/* Glow effect */}
-              <div className="absolute inset-0 bg-gradient-radial from-primary/10 via-transparent to-transparent blur-2xl" />
-
-              {/* Product Image */}
-              <div className="relative w-full h-full flex items-center justify-center p-12">
-                <div className="relative w-full h-full group">
-                  <Image
-                    src="/images/rama-20thin.png"
-                    alt="RAMA Premium Aluminum Canned Water - 330ml luxury purified drinking water in minimalist aluminum can, plastic-free and infinitely recyclable"
-                    fill
-                    className="object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-700"
-                    priority
-                    itemProp="image"
-                  />
-                  {/* Floating animation hint */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-8">
-                    <span className="text-xs text-muted-foreground tracking-wider">Premium Design</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Product label */}
-              <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-8 py-3 bg-background border border-border/50 backdrop-blur-sm">
-                <p className="text-sm tracking-[0.3em] uppercase font-light">330ml Aluminum Can</p>
-              </div>
+            <h3 className="text-3xl md:text-5xl font-serif font-extralight mb-6">
+              Pure Alpine Spring Water
+            </h3>
+            <div className="inline-flex items-center gap-4 mb-8">
+              <div className="h-px w-12 bg-gradient-to-r from-transparent to-border" />
+              <p className="text-[11px] tracking-[0.45em] uppercase text-muted-foreground font-light">The Crisp, Neutral Canvas</p>
+              <div className="h-px w-12 bg-gradient-to-l from-transparent to-border" />
             </div>
           </div>
-
-          {/* Right: Features & CTA */}
           <div
-            className={`space-y-8 transition-all duration-1200 delay-500 ${
-              isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
+            className={`max-w-3xl mx-auto transition-all duration-1000 delay-500 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            {/* Features Grid */}
-            <div className="grid grid-cols-2 gap-6">
-              {features.map((feature, index) => (
-                <div
-                  key={feature.label}
-                  className={`group relative transition-all duration-700 ${
-                    isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                  }`}
-                  style={{ transitionDelay: `${700 + index * 100}ms` }}
-                  onMouseEnter={() => setHoveredFeature(index)}
-                  onMouseLeave={() => setHoveredFeature(null)}
-                >
-                  {/* Hover glow */}
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 blur-xl transition-opacity duration-500 ${
-                      hoveredFeature === index ? "opacity-100" : "opacity-0"
-                    }`}
-                  />
+            <p className="text-lg md:text-xl text-muted-foreground/90 leading-relaxed font-light text-center">
+              Sourced from protected alpine springs, our water is naturally filtered over decades through mineral-rich geology. The result is a clean, neutral profile with a crisp finish—a palate that complements, never competes. It is the perfect foundation, whether you're savoring it alone or pairing it with the finest cuisine.
+            </p>
+          </div>
+        </div>
 
-                  {/* Feature Card */}
-                  <div className="relative p-8 border border-border/40 backdrop-blur-sm bg-background/50 hover:border-foreground/30 hover:bg-background/80 transition-all duration-500 group-hover:scale-105 overflow-hidden">
-                    {/* Animated gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-transparent via-muted/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
-
-                    {/* Icon */}
-                    <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-500">
-                      {feature.icon}
-                    </div>
-
-                    {/* Content */}
-                    <div className="relative space-y-1">
-                      <p className="text-3xl md:text-4xl font-serif font-light text-foreground/90">
-                        {feature.value}
-                      </p>
-                      <p className="text-sm tracking-[0.2em] uppercase font-light text-muted-foreground">
-                        {feature.label}
-                      </p>
-                      <p className="text-xs text-muted-foreground/70">{feature.sublabel}</p>
-                    </div>
-                  </div>
+        {/* The Canvas Section */}
+        <div className="space-y-8">
+          <div
+            className={`text-center transition-all duration-1000 delay-700 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
+            <h3 className="text-3xl md:text-5xl font-serif font-extralight mb-6">
+              The Canvas
+            </h3>
+            <div className="inline-flex items-center gap-4 mb-8">
+              <div className="h-px w-12 bg-gradient-to-r from-transparent to-border" />
+              <p className="text-[11px] tracking-[0.45em] uppercase text-muted-foreground font-light">Infinitely Recyclable. Perfectly Balanced.</p>
+              <div className="h-px w-12 bg-gradient-to-l from-transparent to-border" />
+            </div>
+          </div>
+          <div
+            className={`max-w-3xl mx-auto space-y-6 transition-all duration-1000 delay-900 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
+            <p className="text-lg md:text-xl text-muted-foreground/90 leading-relaxed font-light text-center">
+              Our 330ml premium aluminum can is a study in intentionality. We chose aluminum not for trends, but for truth: it is completely inert, protecting the water's taste from light and plastic leaching, and it is the world's most recyclable material. The matte finish, satisfying pull-tab, and chilled weight are all calibrated for a single purpose—to make the act of drinking water feel like a considered choice.
+            </p>
+            <div className="pt-8 space-y-4">
+              <p className="text-base font-light text-foreground/90 text-center mb-6">Why The Can?</p>
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="p-6 border border-border/30 backdrop-blur-sm bg-background/30">
+                  <p className="text-sm font-light text-foreground/90 mb-2">Superior Protection</p>
+                  <p className="text-xs text-muted-foreground/70">Blocks all light, prevents flavor transfer, maintains perfect temperature.</p>
                 </div>
-              ))}
-            </div>
-
-            {/* Description */}
-            <div
-              className={`p-8 border border-border/30 backdrop-blur-sm bg-background/30 transition-all duration-1000 delay-1000 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-            >
-              <p className="text-lg font-light text-muted-foreground/90 leading-relaxed mb-4">
-                Each RAMA can is crafted from{" "}
-                <span className="text-foreground font-normal">premium aluminum</span>, infinitely recyclable and
-                designed to complement refined environments.
-              </p>
-              <div className="flex items-center gap-3 text-xs tracking-[0.2em] uppercase text-muted-foreground">
-                <div className="w-1 h-1 rounded-full bg-muted-foreground/50" />
-                <span>Sleek Design</span>
-                <div className="w-1 h-1 rounded-full bg-muted-foreground/50" />
-                <span>Sustainable Choice</span>
+                <div className="p-6 border border-border/30 backdrop-blur-sm bg-background/30">
+                  <p className="text-sm font-light text-foreground/90 mb-2">True Sustainability</p>
+                  <p className="text-xs text-muted-foreground/70">Can be recycled infinitely without quality loss.</p>
+                </div>
+                <div className="p-6 border border-border/30 backdrop-blur-sm bg-background/30">
+                  <p className="text-sm font-light text-foreground/90 mb-2">Tactile Experience</p>
+                  <p className="text-xs text-muted-foreground/70">The weight, the chill, the sound—every sensory detail is designed.</p>
+                </div>
               </div>
-            </div>
-
-            {/* CTA Button */}
-            <div
-              className={`flex flex-col sm:flex-row gap-4 transition-all duration-1000 delay-1200 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-            >
-              <button className="group relative flex-1 px-10 py-5 bg-foreground text-background text-[11px] tracking-[0.3em] uppercase font-light overflow-hidden hover:shadow-2xl hover:shadow-black/20 transition-all duration-500">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
-                <span className="relative">Shop RAMA</span>
-              </button>
-
-              <button className="group relative flex-1 px-10 py-5 border border-border/50 backdrop-blur-sm text-[11px] tracking-[0.3em] uppercase font-light hover:border-foreground/40 hover:bg-muted/20 transition-all duration-500 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-muted/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
-                <span className="relative">Learn More</span>
-              </button>
             </div>
           </div>
         </div>

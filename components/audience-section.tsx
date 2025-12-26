@@ -2,13 +2,6 @@
 
 import { useRef, useEffect, useState } from "react"
 
-const audiences = [
-  { title: "Weddings", description: "Intimate ceremonies and celebrations", icon: "✦" },
-  { title: "Corporate Events", description: "Executive meetings and gatherings", icon: "◆" },
-  { title: "Premium Lounges", description: "Hospitality and curated spaces", icon: "◇" },
-  { title: "Brand Activations", description: "Curated experiences and launches", icon: "✧" },
-]
-
 export function AudienceSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const [isVisible, setIsVisible] = useState(false)
@@ -40,8 +33,8 @@ export function AudienceSection() {
       <div className="absolute top-20 left-1/4 w-px h-40 bg-gradient-to-b from-transparent via-border/30 to-transparent" />
       <div className="absolute bottom-20 right-1/4 w-px h-40 bg-gradient-to-b from-transparent via-border/30 to-transparent" />
 
-      <div className="relative max-w-6xl w-full">
-        <div className="text-center mb-24">
+      <div className="relative max-w-7xl w-full">
+        <div className="text-center mb-20">
           <div
             className={`inline-flex flex-col items-center gap-4 mb-10 transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -50,81 +43,107 @@ export function AudienceSection() {
             <div className="flex items-center gap-4">
               <div className="h-px w-16 bg-gradient-to-r from-transparent to-border" />
               <p className="text-[11px] tracking-[0.45em] uppercase text-muted-foreground font-light">
-                Where RAMA Belongs
+                The Two Canvases of RAMA
               </p>
               <div className="h-px w-16 bg-gradient-to-l from-transparent to-border" />
             </div>
-            <div className="w-1 h-1 rounded-full bg-muted-foreground/40" />
           </div>
-
-          <h2
-            className={`text-4xl md:text-6xl lg:text-7xl font-serif font-extralight leading-[1.3] max-w-4xl mx-auto transition-all duration-1200 delay-200 ease-out ${
-              isVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-12 blur-sm"
-            }`}
-          >
-            Created for spaces where
-            <br />
-            <span className="bg-gradient-to-r from-foreground via-foreground/80 to-foreground bg-clip-text text-transparent">
-              details are noticed
-            </span>
-          </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-          {audiences.map((item, index) => (
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+          {/* FOR THE DAILY RITUAL */}
+          <div
+            className={`group relative transition-all duration-700 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+            }`}
+            style={{ transitionDelay: "300ms" }}
+            onMouseEnter={() => setHoveredIndex(0)}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
             <div
-              key={item.title}
-              className={`group relative transition-all duration-700 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+              className={`absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 blur-xl transition-opacity duration-500 ${
+                hoveredIndex === 0 ? "opacity-100" : "opacity-0"
               }`}
-              style={{ transitionDelay: `${500 + index * 150}ms` }}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              {/* Background glow on hover */}
-              <div
-                className={`absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 blur-xl transition-opacity duration-500 ${
-                  hoveredIndex === index ? "opacity-100" : "opacity-0"
-                }`}
-              />
-
-              {/* Card */}
-              <div className="relative p-10 border border-border/40 backdrop-blur-sm bg-background/50 hover:border-foreground/30 hover:bg-background/80 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-black/5 overflow-hidden">
-                {/* Animated gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-muted/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
-
-                {/* Icon */}
-                <div className="absolute top-8 right-8 text-3xl text-muted-foreground/20 group-hover:text-foreground/30 group-hover:scale-110 transition-all duration-500">
-                  {item.icon}
+            />
+            <div className="relative p-10 lg:p-12 border border-border/40 backdrop-blur-sm bg-background/50 hover:border-foreground/30 hover:bg-background/80 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-black/5 overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-muted/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
+              <div className="relative space-y-6">
+                <div>
+                  <p className="text-[11px] tracking-[0.45em] uppercase text-muted-foreground font-light mb-4">FOR THE DAILY RITUAL</p>
+                  <h3 className="text-3xl md:text-4xl font-serif font-extralight mb-6">The Essential, Perfected.</h3>
                 </div>
-
-                {/* Content */}
-                <div className="relative">
-                  <h3 className="text-2xl md:text-3xl font-serif font-light mb-4 group-hover:translate-x-2 transition-all duration-500">
-                    {item.title}
-                  </h3>
-                  <div className="h-px w-12 bg-gradient-to-r from-border to-transparent mb-4 group-hover:w-20 transition-all duration-500" />
-                  <p className="text-muted-foreground/80 text-sm md:text-base font-light leading-relaxed group-hover:text-muted-foreground transition-colors duration-500">
-                    {item.description}
-                  </p>
+                <p className="text-base md:text-lg text-muted-foreground/90 leading-relaxed font-light">
+                  Your morning routine. Your focused work desk. Your gym bag. Your weekend refuge. RAMA transforms the simple, essential act of drinking water into a reaffirmation of living well. Its perfectly balanced weight and matte finish feel intentional in your hand—a silent commitment to choosing better in a world of clutter.
+                </p>
+                <div className="space-y-3 pt-4">
+                  <div className="flex items-start gap-3">
+                    <span className="text-foreground/60 mt-1">•</span>
+                    <p className="text-sm text-muted-foreground/80 font-light"><span className="text-foreground/90 font-normal">Sustained Purity:</span> Alpine-sourced water protected in light-proof, taste-preserving aluminum.</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="text-foreground/60 mt-1">•</span>
+                    <p className="text-sm text-muted-foreground/80 font-light"><span className="text-foreground/90 font-normal">Designed for the Hand:</span> Ergonomics that make the everyday feel exceptional.</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="text-foreground/60 mt-1">•</span>
+                    <p className="text-sm text-muted-foreground/80 font-light"><span className="text-foreground/90 font-normal">Conscious Curation:</span> The first choice in a life dedicated to intentional consumption.</p>
+                  </div>
+                </div>
+                <div className="pt-6">
+                  <button className="group/btn relative px-8 py-4 border border-border/50 backdrop-blur-sm text-[11px] tracking-[0.3em] uppercase font-light hover:border-foreground/40 hover:bg-muted/20 transition-all duration-500 overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-muted/20 to-transparent translate-x-[-200%] group-hover/btn:translate-x-[200%] transition-transform duration-700" />
+                    <span className="relative">PRE-ORDER A PERSONAL RESERVE</span>
+                  </button>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
 
-        {/* Bottom section */}
-        <div
-          className={`mt-24 text-center transition-all duration-1200 delay-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <div className="inline-flex flex-col items-center gap-6">
-            <div className="w-px h-16 bg-gradient-to-b from-border/50 to-transparent" />
-            <div className="inline-block px-8 py-3 border border-border/30 backdrop-blur-sm">
-              <p className="text-sm tracking-[0.2em] uppercase text-muted-foreground font-light">
-                Starting in major urban centers
-              </p>
+          {/* FOR THE CURATED OCCASION */}
+          <div
+            className={`group relative transition-all duration-700 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+            }`}
+            style={{ transitionDelay: "600ms" }}
+            onMouseEnter={() => setHoveredIndex(1)}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
+            <div
+              className={`absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 blur-xl transition-opacity duration-500 ${
+                hoveredIndex === 1 ? "opacity-100" : "opacity-0"
+              }`}
+            />
+            <div className="relative p-10 lg:p-12 border border-border/40 backdrop-blur-sm bg-background/50 hover:border-foreground/30 hover:bg-background/80 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-black/5 overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-muted/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
+              <div className="relative space-y-6">
+                <div>
+                  <p className="text-[11px] tracking-[0.45em] uppercase text-muted-foreground font-light mb-4">FOR THE CURATED OCCASION</p>
+                  <h3 className="text-3xl md:text-4xl font-serif font-extralight mb-6">The Distinction, Guaranteed.</h3>
+                </div>
+                <p className="text-base md:text-lg text-muted-foreground/90 leading-relaxed font-light">
+                  The wedding toast. The corporate gift. The intimate dinner. The product launch. Here, RAMA becomes part of your narrative—a seamless, elegant element that speaks to your discernment without uttering a word. It unifies the guest experience, elevating the moment while eliminating the visual noise of mismatched vessels.
+                </p>
+                <div className="space-y-3 pt-4">
+                  <div className="flex items-start gap-3">
+                    <span className="text-foreground/60 mt-1">•</span>
+                    <p className="text-sm text-muted-foreground/80 font-light"><span className="text-foreground/90 font-normal">Aesthetic Cohesion:</span> Minimalist design that complements any tablescape or brand aesthetic.</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="text-foreground/60 mt-1">•</span>
+                    <p className="text-sm text-muted-foreground/80 font-light"><span className="text-foreground/90 font-normal">Zero-Waste Prestige:</span> Demonstrate commitment to sustainability without compromise.</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="text-foreground/60 mt-1">•</span>
+                    <p className="text-sm text-muted-foreground/80 font-light"><span className="text-foreground/90 font-normal">Unified Experience:</span> Offer every guest the same impeccable standard of taste and presentation.</p>
+                  </div>
+                </div>
+                <div className="pt-6">
+                  <button className="group/btn relative px-8 py-4 border border-border/50 backdrop-blur-sm text-[11px] tracking-[0.3em] uppercase font-light hover:border-foreground/40 hover:bg-muted/20 transition-all duration-500 overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-muted/20 to-transparent translate-x-[-200%] group-hover/btn:translate-x-[200%] transition-transform duration-700" />
+                    <span className="relative">RESERVE FOR YOUR EVENT</span>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

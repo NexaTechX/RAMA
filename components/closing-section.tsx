@@ -78,62 +78,44 @@ export function ClosingSection() {
         </div>
 
         {/* Main heading */}
-        <div className="mb-10">
+        <div className="mb-12">
           <h2
-            className={`text-5xl md:text-7xl lg:text-8xl font-serif font-extralight leading-[1.2] mb-6 transition-all duration-1200 delay-200 ease-out ${
+            className={`text-4xl md:text-6xl lg:text-7xl font-serif font-extralight leading-[1.2] mb-8 transition-all duration-1200 delay-200 ease-out ${
               isVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-12 blur-sm"
             }`}
           >
-            RAMA is not
+            Don't Let Generic Water
             <br />
             <span className="bg-gradient-to-r from-foreground via-foreground/70 to-foreground bg-clip-text text-transparent">
-              mass water.
+              Fracture Your Moment.
             </span>
           </h2>
 
           <div
-            className={`flex items-center justify-center gap-4 my-10 transition-all duration-1000 delay-400 ${
-              isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
-            }`}
-          >
-            <div className="h-px w-16 bg-gradient-to-r from-transparent to-border" />
-            <div className="w-2 h-2 rounded-full bg-foreground/30 relative">
-              <div className="absolute inset-0 rounded-full bg-foreground/30 animate-ping" />
-            </div>
-            <div className="h-px w-16 bg-gradient-to-l from-transparent to-border" />
-          </div>
-
-          <div
-            className={`max-w-2xl mx-auto transition-all duration-1200 delay-500 ease-out ${
+            className={`max-w-2xl mx-auto mb-12 transition-all duration-1200 delay-400 ease-out ${
               isVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-12 blur-sm"
             }`}
           >
-            <p className="text-3xl md:text-4xl font-serif font-light text-muted-foreground/90 mb-3">
-              It is presence,
-            </p>
-            <p className="text-3xl md:text-4xl font-serif font-light text-muted-foreground/90 mb-3">
-              simplicity,
-            </p>
-            <p className="text-3xl md:text-4xl font-serif font-light text-foreground">
-              and intention.
+            <p className="text-xl md:text-2xl font-light text-muted-foreground/90 leading-relaxed">
+              Make the intentional choice. Be the first to experience RAMA.
             </p>
           </div>
         </div>
 
         {/* Call to action buttons */}
         <div
-          className={`mt-20 flex flex-col sm:flex-row items-center justify-center gap-6 transition-all duration-1200 delay-700 ${
+          className={`flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-1200 delay-600 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
         >
-          <button className="group relative px-12 py-5 bg-foreground text-background text-[10px] tracking-[0.3em] uppercase font-light overflow-hidden hover:px-14 transition-all duration-500 hover:shadow-2xl hover:shadow-black/20">
+          <button className="group relative px-10 py-5 bg-foreground text-background text-[11px] tracking-[0.3em] uppercase font-light overflow-hidden hover:px-12 transition-all duration-500 hover:shadow-2xl hover:shadow-black/20">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
-            <span className="relative">Request a Pre-Order</span>
+            <span className="relative">PRE-ORDER FOR MY HOME</span>
           </button>
 
-          <button className="group relative px-12 py-5 border border-border/50 backdrop-blur-sm text-[10px] tracking-[0.3em] uppercase font-light hover:border-foreground/40 hover:bg-muted/20 hover:px-14 transition-all duration-500 overflow-hidden">
+          <button className="group relative px-10 py-5 border border-border/50 backdrop-blur-sm text-[11px] tracking-[0.3em] uppercase font-light hover:border-foreground/40 hover:bg-muted/20 hover:px-12 transition-all duration-500 overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-muted/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
-            <span className="relative">Experience the Can</span>
+            <span className="relative">PRE-ORDER FOR AN EVENT</span>
           </button>
         </div>
 

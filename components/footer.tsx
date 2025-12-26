@@ -27,7 +27,7 @@ export function Footer() {
               <div className="w-1.5 h-1.5 rounded-full bg-foreground/40 group-hover:scale-150 transition-transform duration-500" />
             </div>
             <p className="text-sm text-muted-foreground/80 font-light leading-relaxed max-w-xs">
-              Luxury Canned Water for Refined Moments
+              Water, Designed for Presence.
             </p>
             <div className="mt-4 h-px w-32 bg-gradient-to-r from-border to-transparent mx-auto md:mx-0" />
           </div>
@@ -68,7 +68,18 @@ export function Footer() {
 
         {/* Bottom section */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-muted-foreground/70">
-          <p className="font-light tracking-wider">© 2025 RAMA Water. All rights reserved.</p>
+          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+            <p className="font-light tracking-wider">© 2025 RAMA Water. All rights reserved.</p>
+            <div className="flex items-center gap-4">
+              <a href="mailto:hello@rama-water.com" className="relative tracking-wider font-light hover:text-foreground transition-colors duration-500">
+                hello@rama-water.com
+              </a>
+              <div className="w-1 h-1 rounded-full bg-muted-foreground/40" />
+              <a href="https://instagram.com/ramawater" target="_blank" rel="noopener noreferrer" className="relative tracking-wider font-light hover:text-foreground transition-colors duration-500">
+                @ramawater
+              </a>
+            </div>
+          </div>
 
           <div className="flex items-center gap-8">
             {links.map((link) => (

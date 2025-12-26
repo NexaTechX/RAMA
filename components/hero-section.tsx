@@ -33,23 +33,23 @@ export function HeroSection() {
 
       {/* Text Overlay */}
       <div className="relative z-10 text-center max-w-4xl px-6 pointer-events-none" style={{ opacity }}>
-        <p className="text-xs tracking-[0.4em] uppercase text-white/80 mb-6">Luxury Canned Water</p>
-        <h1 className="text-5xl md:text-7xl font-serif font-light leading-tight tracking-tight text-balance text-white">
-          For Refined Moments
+        <h1 className="text-5xl md:text-7xl font-serif font-light leading-tight tracking-tight text-balance text-white mb-4">
+          RAMA
         </h1>
-        <p className="mt-8 text-lg text-white/90 max-w-xl mx-auto leading-relaxed" itemProp="description">
-          RAMA is not about quenching thirst. It is about presence.
+        <p className="text-xs tracking-[0.4em] uppercase text-white/80 mb-8">Luxury Canned Water for Refined Moments</p>
+        <p className="mt-6 text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed font-light" itemProp="description">
+          Where design meets daily ritual. Where intention elevates every occasion.
+        </p>
+        <p className="mt-4 text-base md:text-lg text-white/80 max-w-2xl mx-auto leading-relaxed font-light">
+          Be among the first to experience RAMA. Pre-order our limited inaugural release for your home, your carry, or your next curated event.
         </p>
         <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 pointer-events-auto">
           <button className="px-8 py-4 bg-white text-black text-xs tracking-widest uppercase hover:bg-white/90 transition-all">
-            Request a Pre-Order
+            PRE-ORDER FOR MY HOME
           </button>
-          <a
-            href="#experience"
-            className="px-8 py-4 border border-white/50 text-white text-xs tracking-widest uppercase hover:bg-white/10 transition-all"
-          >
-            Experience the Can
-          </a>
+          <button className="px-8 py-4 border border-white/50 text-white text-xs tracking-widest uppercase hover:bg-white/10 transition-all">
+            PRE-ORDER FOR AN EVENT
+          </button>
         </div>
       </div>
 

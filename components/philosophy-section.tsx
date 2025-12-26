@@ -2,11 +2,10 @@
 
 import { useRef, useEffect, useState } from "react"
 
-const philosophyPoints = [
-  { text: "Event-driven pre-orders", detail: "Precision over speculation" },
-  { text: "No excess production", detail: "Intentional volume" },
-  { text: "Upfront confirmation before production", detail: "Commitment first" },
-  { text: "High-margin, low-volume by design", detail: "Quality, not quantity" },
+const benefits = [
+  { title: "GUARANTEED ALLOCATION", detail: "Secure cans from our numbered first edition, reserved in your name." },
+  { title: "PRIORITY ACCESS", detail: "Be the first to receive RAMA and enjoy exclusive access to future releases." },
+  { title: "DIRECT PARTNERSHIP", detail: "Founding Members receive direct communication with our team for seamless coordination." },
 ]
 
 export function PhilosophySection() {
@@ -45,96 +44,100 @@ export function PhilosophySection() {
         <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-background rounded-full blur-3xl" />
       </div>
 
-      <div className="relative max-w-5xl w-full">
+      <div className="relative max-w-6xl w-full">
         {/* Header */}
-        <div className="mb-20">
+        <div className="mb-20 text-center">
           <div
             className={`inline-flex items-center gap-4 mb-10 transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
             <div className="w-1 h-1 rounded-full bg-background/40" />
-            <p className="text-[11px] tracking-[0.45em] uppercase text-background/60 font-light">How RAMA Operates</p>
+            <p className="text-[11px] tracking-[0.45em] uppercase text-background/60 font-light">Join the Inaugural Release</p>
             <div className="h-px w-20 bg-gradient-to-r from-background/40 to-transparent" />
           </div>
 
           <h2
-            className={`text-4xl md:text-6xl lg:text-7xl font-serif font-extralight leading-[1.25] max-w-4xl transition-all duration-1200 delay-200 ease-out ${
+            className={`text-4xl md:text-6xl lg:text-7xl font-serif font-extralight leading-[1.25] max-w-4xl mx-auto mb-8 transition-all duration-1200 delay-200 ease-out ${
               isVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-12 blur-sm"
             }`}
           >
-            We do not produce in excess.
+            Production by Intention.
             <br />
-            <span className="text-background/70">We do not chase volume.</span>
+            <span className="text-background/70">Access by Invitation.</span>
           </h2>
+
+          <div
+            className={`max-w-3xl mx-auto transition-all duration-1200 delay-400 ease-out ${
+              isVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-12 blur-sm"
+            }`}
+          >
+            <p className="text-lg md:text-xl text-background/80 leading-relaxed font-light">
+              We do not believe in excess production. Our first run is limited, numbered, and available exclusively through pre-order. By securing your allocation now, you become a Founding Member—ensuring access from our inaugural batch and enabling our precise, zero-waste production model.
+            </p>
+          </div>
         </div>
 
-        {/* Philosophy points grid */}
-        <div className="grid md:grid-cols-2 gap-6 mb-20">
-          {philosophyPoints.map((point, index) => (
-            <div
-              key={point.text}
-              className={`group relative transition-all duration-700 ${
-                isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
-              }`}
-              style={{ transitionDelay: `${500 + index * 150}ms` }}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              {/* Hover glow */}
+        {/* Founding Member Benefits */}
+        <div className="mb-16">
+          <h3
+            className={`text-2xl md:text-3xl font-serif font-light mb-12 text-center transition-all duration-1000 delay-600 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
+            The Founding Member Benefits:
+          </h3>
+          <div className="grid md:grid-cols-3 gap-6 mb-16">
+            {benefits.map((benefit, index) => (
               <div
-                className={`absolute inset-0 bg-background/5 blur-xl transition-opacity duration-500 ${
-                  hoveredIndex === index ? "opacity-100" : "opacity-0"
+                key={benefit.title}
+                className={`group relative transition-all duration-700 ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
                 }`}
-              />
-
-              {/* Card */}
-              <div className="relative p-8 border border-background/20 backdrop-blur-sm hover:border-background/40 hover:bg-background/5 transition-all duration-500 overflow-hidden group-hover:translate-x-2">
-                {/* Animated gradient */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-background/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
-
-                {/* Number indicator */}
-                <div className="absolute top-4 right-6 text-5xl font-serif text-background/10 font-light group-hover:text-background/20 transition-colors duration-500">
-                  {String(index + 1).padStart(2, "0")}
-                </div>
-
-                {/* Content */}
-                <div className="relative">
-                  <div className="flex items-center gap-4 mb-3">
-                    <div className="w-2 h-2 rounded-full bg-background/40 group-hover:bg-background/70 group-hover:scale-125 transition-all duration-500" />
-                    <div className="h-px flex-1 bg-gradient-to-r from-background/20 to-transparent" />
+                style={{ transitionDelay: `${800 + index * 150}ms` }}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                <div
+                  className={`absolute inset-0 bg-background/5 blur-xl transition-opacity duration-500 ${
+                    hoveredIndex === index ? "opacity-100" : "opacity-0"
+                  }`}
+                />
+                <div className="relative p-8 border border-background/20 backdrop-blur-sm hover:border-background/40 hover:bg-background/5 transition-all duration-500 overflow-hidden h-full">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-background/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
+                  <div className="relative">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="text-2xl font-serif text-background/60 font-light">
+                        {String(index + 1)}
+                      </div>
+                      <div className="h-px flex-1 bg-gradient-to-r from-background/20 to-transparent" />
+                    </div>
+                    <p className="text-lg md:text-xl text-background/90 font-light mb-3 leading-tight">
+                      {benefit.title}
+                    </p>
+                    <p className="text-sm text-background/60 font-light leading-relaxed">
+                      {benefit.detail}
+                    </p>
                   </div>
-                  <p className="text-xl md:text-2xl text-background/90 font-light mb-2 leading-tight">
-                    {point.text}
-                  </p>
-                  <p className="text-sm text-background/50 font-light italic group-hover:text-background/70 transition-colors duration-500">
-                    {point.detail}
-                  </p>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
-        {/* Closing statement */}
+        {/* Delivery & Timeline */}
         <div
-          className={`text-center transition-all duration-1200 delay-1000 ease-out ${
+          className={`text-center transition-all duration-1200 delay-1200 ease-out ${
             isVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-12 blur-sm"
           }`}
         >
-          <div className="inline-flex flex-col items-center gap-6">
-            <div className="w-px h-20 bg-gradient-to-b from-background/20 via-background/40 to-transparent" />
-            <div className="relative inline-block px-16 py-8 group cursor-default">
-              {/* Decorative corners */}
-              <div className="absolute top-0 left-0 w-8 h-8 border-l border-t border-background/20 -translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500" />
-              <div className="absolute top-0 right-0 w-8 h-8 border-r border-t border-background/20 translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500" />
-              <div className="absolute bottom-0 left-0 w-8 h-8 border-l border-b border-background/20 -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500" />
-              <div className="absolute bottom-0 right-0 w-8 h-8 border-r border-b border-background/20 translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500" />
-
-              <p className="text-3xl md:text-4xl font-serif italic text-background/80 font-light tracking-wide relative">
-                Intentional in every step.
-              </p>
-            </div>
+          <div className="inline-block px-8 py-6 border border-background/20 backdrop-blur-sm">
+            <p className="text-base text-background/90 font-light mb-2">
+              <span className="font-normal">Delivery & Timeline:</span>
+            </p>
+            <p className="text-sm text-background/70 font-light">
+              All Founding Pre-Orders are scheduled for delivery in <span className="text-background/90">Q4 2024 / Q1 2025</span>. Event orders are coordinated to arrive 4-6 weeks prior to your date.
+            </p>
           </div>
         </div>
       </div>

@@ -112,25 +112,26 @@ export function SolutionSection() {
             isVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-12 blur-sm"
           }`}
         >
-          RAMA reimagines water
+          The Quiet Icon.
         </h2>
         <h2
           className={`text-4xl md:text-6xl lg:text-7xl font-serif font-extralight leading-[1.3] bg-gradient-to-r from-foreground via-foreground/70 to-foreground bg-clip-text text-transparent transition-all duration-1200 delay-300 ease-out ${
             isVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-12 blur-sm"
           }`}
         >
-          as an object of intention.
+          The Intentional Choice.
         </h2>
 
         <div
-          className={`mt-16 max-w-2xl mx-auto transition-all duration-1200 delay-500 ease-out ${
+          className={`mt-16 max-w-3xl mx-auto space-y-6 transition-all duration-1200 delay-500 ease-out ${
             isVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-12 blur-sm"
           }`}
         >
           <p className="text-xl md:text-2xl text-muted-foreground/90 leading-relaxed font-light">
-            Purified drinking water sealed in{" "}
-            <span className="text-foreground font-normal">minimalist aluminum cans</span> — plastic-free, elegant, and
-            designed to belong in refined environments.
+            RAMA is engineered for presence. We return to the essence of water—pure, crisp, neutral—and present it through considered design. Our mission is to transform the act of hydration into a moment of quiet intention, whether you're savoring it alone at your desk or toasting with guests at your most important gathering.
+          </p>
+          <p className="text-xl md:text-2xl text-foreground/90 leading-relaxed font-light">
+            This is water, elevated to its rightful place.
           </p>
         </div>
 

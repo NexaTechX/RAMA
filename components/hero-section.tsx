@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { useScrollOpacity } from "@/hooks/use-scroll"
+import { PERSONAL_RESERVE_FORM_URL, EVENT_ALLOCATION_FORM_URL, COMMERCIAL_RESALE_FORM_URL } from "@/lib/constants"
 
 export function HeroSection() {
   const [mounted, setMounted] = useState(false)
@@ -10,6 +11,13 @@ export function HeroSection() {
   useEffect(() => {
     setMounted(true)
   }, [])
+
+  const handlePreOrderClick = (formType: "personal" | "event" | "commercial") => {
+    let formUrl = PERSONAL_RESERVE_FORM_URL
+    if (formType === "event") formUrl = EVENT_ALLOCATION_FORM_URL
+    if (formType === "commercial") formUrl = COMMERCIAL_RESALE_FORM_URL
+    window.open(formUrl, "_blank", "noopener,noreferrer")
+  }
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -41,14 +49,26 @@ export function HeroSection() {
           Where design meets daily ritual. Where intention elevates every occasion.
         </p>
         <p className="mt-4 text-base md:text-lg text-white/80 max-w-2xl mx-auto leading-relaxed font-light">
-          Be among the first to experience RAMA. Pre-order our limited inaugural release for your home, your carry, or your next curated event.
+          Be among the first to experience RAMA. Pre-order our limited inaugural release for your home, business, events, or retail.
         </p>
         <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 pointer-events-auto">
-          <button className="px-8 py-4 bg-white text-black text-xs tracking-widest uppercase hover:bg-white/90 transition-all">
-            PRE-ORDER FOR MY HOME
+          <button
+            onClick={() => handlePreOrderClick("personal")}
+            className="px-8 py-4 bg-white text-black text-xs tracking-widest uppercase hover:bg-white/90 transition-all"
+          >
+            PRE-ORDER FOR HOME
           </button>
-          <button className="px-8 py-4 border border-white/50 text-white text-xs tracking-widest uppercase hover:bg-white/10 transition-all">
-            PRE-ORDER FOR AN EVENT
+          <button
+            onClick={() => handlePreOrderClick("event")}
+            className="px-8 py-4 border border-white/50 text-white text-xs tracking-widest uppercase hover:bg-white/10 transition-all"
+          >
+            RESERVE FOR EVENT
+          </button>
+          <button
+            onClick={() => handlePreOrderClick("commercial")}
+            className="px-8 py-4 border border-white/50 text-white text-xs tracking-widest uppercase hover:bg-white/10 transition-all"
+          >
+            INQUIRE FOR RESALE
           </button>
         </div>
       </div>

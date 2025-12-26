@@ -157,22 +157,6 @@ export function SolutionSection() {
           ))}
         </div>
 
-        {/* Closing statement with border */}
-        <div
-          className={`mt-24 relative transition-all duration-1200 delay-1000 ease-out ${
-            isVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-12 blur-sm"
-          }`}
-        >
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-6 w-px h-12 bg-gradient-to-b from-border to-transparent" />
-          <div className="inline-block px-16 py-8 border border-border/30 backdrop-blur-sm relative overflow-hidden group hover:border-foreground/40 transition-all duration-500">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-muted/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
-            <p className="text-2xl md:text-3xl font-serif italic text-foreground/80 font-light tracking-wide relative">
-              Nothing excessive.
-              <br />
-              <span className="text-muted-foreground">Nothing accidental.</span>
-            </p>
-          </div>
-        </div>
       </div>
     </section>
   )

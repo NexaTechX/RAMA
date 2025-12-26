@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState } from "react"
 import dynamic from "next/dynamic"
+import { PERSONAL_RESERVE_FORM_URL, EVENT_ALLOCATION_FORM_URL, COMMERCIAL_RESALE_FORM_URL } from "@/lib/constants"
 
 const ClosingCanvas = dynamic(() => import("./closing-canvas").then((mod) => ({ default: mod.ClosingCanvas })), {
   ssr: false,
@@ -12,6 +13,13 @@ export function ClosingSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const [isVisible, setIsVisible] = useState(false)
   const [mounted, setMounted] = useState(false)
+
+  const handlePreOrderClick = (formType: "personal" | "event" | "commercial") => {
+    let formUrl = PERSONAL_RESERVE_FORM_URL
+    if (formType === "event") formUrl = EVENT_ALLOCATION_FORM_URL
+    if (formType === "commercial") formUrl = COMMERCIAL_RESALE_FORM_URL
+    window.open(formUrl, "_blank", "noopener,noreferrer")
+  }
 
   useEffect(() => {
     setMounted(true)
@@ -108,14 +116,28 @@ export function ClosingSection() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
         >
-          <button className="group relative px-10 py-5 bg-foreground text-background text-[11px] tracking-[0.3em] uppercase font-light overflow-hidden hover:px-12 transition-all duration-500 hover:shadow-2xl hover:shadow-black/20">
+          <button
+            onClick={() => handlePreOrderClick("personal")}
+            className="group relative px-8 py-4 bg-foreground text-background text-[10px] tracking-[0.3em] uppercase font-light overflow-hidden hover:px-10 transition-all duration-500 hover:shadow-2xl hover:shadow-black/20"
+          >
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
-            <span className="relative">PRE-ORDER FOR MY HOME</span>
+            <span className="relative">PRE-ORDER FOR HOME</span>
           </button>
 
-          <button className="group relative px-10 py-5 border border-border/50 backdrop-blur-sm text-[11px] tracking-[0.3em] uppercase font-light hover:border-foreground/40 hover:bg-muted/20 hover:px-12 transition-all duration-500 overflow-hidden">
+          <button
+            onClick={() => handlePreOrderClick("event")}
+            className="group relative px-8 py-4 border border-border/50 backdrop-blur-sm text-[10px] tracking-[0.3em] uppercase font-light hover:border-foreground/40 hover:bg-muted/20 hover:px-10 transition-all duration-500 overflow-hidden"
+          >
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-muted/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
-            <span className="relative">PRE-ORDER FOR AN EVENT</span>
+            <span className="relative">RESERVE FOR EVENT</span>
+          </button>
+
+          <button
+            onClick={() => handlePreOrderClick("commercial")}
+            className="group relative px-8 py-4 border border-border/50 backdrop-blur-sm text-[10px] tracking-[0.3em] uppercase font-light hover:border-foreground/40 hover:bg-muted/20 hover:px-10 transition-all duration-500 overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-muted/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
+            <span className="relative">INQUIRE FOR RESALE</span>
           </button>
         </div>
 

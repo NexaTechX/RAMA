@@ -136,7 +136,7 @@ export function PhilosophySection() {
               <span className="font-normal">Delivery & Timeline:</span>
             </p>
             <p className="text-sm text-background/70 font-light">
-              All Founding Pre-Orders are scheduled for delivery in <span className="text-background/90">Q4 2024 / Q1 2025</span>. Event orders are coordinated to arrive 4-6 weeks prior to your date.
+              All Founding Pre-Orders are scheduled for delivery in <span className="text-background/90">Q2 2025 / Q3 2025</span>. Event orders are coordinated to arrive 4-6 weeks prior to your date.
             </p>
           </div>
         </div>

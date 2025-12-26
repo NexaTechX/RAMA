@@ -52,26 +52,26 @@ export function InteractiveSection() {
             <div className="inline-flex items-center gap-4 mb-8">
               <div className="h-px w-8 bg-gradient-to-r from-transparent to-border" />
               <p className="text-[11px] tracking-[0.45em] uppercase text-muted-foreground font-light">
-                Designed to Be Seen
+                Every Detail, Considered
               </p>
               <div className="h-px w-8 bg-gradient-to-l from-transparent to-border" />
             </div>
 
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif font-extralight leading-[1.2]">
-              Experience the Form
+              The Thoughtful Details
             </h2>
 
             <div className="space-y-6">
               <p className="text-xl md:text-2xl text-muted-foreground/90 font-light leading-relaxed">
-                Every detail of the RAMA can speaks to{" "}
-                <span className="text-foreground font-normal">intentional design</span>.
+                The weight in your hand. The chill against your palm. The satisfying pull-tab. Every sensory detail of the RAMA can is{" "}
+                <span className="text-foreground font-normal">calibrated for a single purpose</span>—to make the act of drinking water feel like a considered choice.
               </p>
 
               <div className="space-y-4 pl-6 border-l-2 border-border/30">
                 {[
-                  { label: "Premium Aluminum", detail: "Sleek, durable, infinitely recyclable" },
-                  { label: "Minimalist Aesthetic", detail: "Clean lines that complement any setting" },
-                  { label: "Ergonomic Design", detail: "Perfect weight and balance in hand" },
+                  { label: "Superior Protection", detail: "Blocks all light, prevents flavor transfer, maintains perfect temperature" },
+                  { label: "True Sustainability", detail: "Can be recycled infinitely without quality loss" },
+                  { label: "Tactile Experience", detail: "The weight, the chill, the sound—every sensory detail is designed" },
                 ].map((item, index) => (
                   <div
                     key={item.label}
@@ -96,8 +96,8 @@ export function InteractiveSection() {
               <div className="absolute inset-0 border border-border/30 group-hover:border-foreground/20 transition-all duration-500" />
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-muted/5 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
               <p className="text-xl md:text-2xl font-serif italic text-muted-foreground/90 relative">
-                Luxury lives in what is{" "}
-                <span className="text-foreground font-normal not-italic">not</span> added.
+                Intentionality in{" "}
+                <span className="text-foreground font-normal not-italic">every</span> detail.
               </p>
             </div>
           </div>
